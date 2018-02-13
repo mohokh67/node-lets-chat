@@ -30,23 +30,23 @@ app.get('/messages', (request, response) =>{
 // });
 
 app.post('/messages', async (request, response) => {
-    var message = new Message(request.body);
-
-    var savedMessage = await message.save()
-    console.log('saved');
-    var censored = await Message.findOne({message: 'fuck'})
-    if(censored){
-        console.log('Censored word found. It will be deleted from system')
-        await Message.remove({_id: censored.id});
-    } else {
-        io.emit('message', request.body); // Emit a new method or event for soket.io
-    }    
-    response.sendStatus(200);
-   
-    // .catch((error) => {
-    //     response.sendStatus(500)
-    //     return console.error(error);
-    // });
+    try{
+        // /throw 'some erorr'; // for checking the catch block
+        var message = new Message(request.body);
+        var savedMessage = await message.save()
+        console.log('saved');
+        var censored = await Message.findOne({message: 'fuck'})
+        if(censored){
+            console.log('Censored word found. It will be deleted from system')
+            await Message.remove({_id: censored.id});
+        } else {
+            io.emit('message', request.body); // Emit a new method or event for soket.io
+        }    
+        response.sendStatus(200);
+    } catch(error){
+        response.sendStatus(500)
+        return console.error(error);
+    }
 })
 
 
