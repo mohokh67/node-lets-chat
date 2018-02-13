@@ -12,7 +12,7 @@ $(() => {
 socket.on('message', addMessage);
 
 function addMessage(message){
-    $('.messages').append(`<h4> ${message.name} </h4> <p> ${message.message}</p>`)
+    $('.messages').append(`<h3> ${message.name} </h3> <p> ${message.message}</p>`)
 }
 
 function getMessages(){
