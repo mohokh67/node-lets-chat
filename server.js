@@ -38,6 +38,14 @@ app.post('/messages', (request, response) => {
             sendStatus(500)
         }
         // messages.push(request.body);
+        Message.findOne({message: 'fuck'}, (error, censored) =>{
+            if(censored){
+                console.log('Censored word found', censored);
+                Message.remove({__id: censored.id}, (error) => {
+                    console.log('Censored messaged removed...', error);
+                })
+            }
+        })
         io.emit('message', request.body); // Emit a new method or event for soket.io
         response.sendStatus(200);
     })
