@@ -10,7 +10,7 @@ app.use(bodyParser.json()) // Parse the body from get request
 app.use(bodyParser.urlencoded({extended: false})) // Parse the body of post request from jQuery
 
 mongoose.Promise = Promise; // Use the ES6 promise for mongoose promise
-var dbURL = 'mongodb://root:root@ds235388.mlab.com:35388/nodejs-chat';
+var dbURL = 'mongodb://root:root@ds235388.mlab.com:35388/nodejs-chat'; // In production, it should be in a safe place
 
 var Message = mongoose.model('Message', {
     name: String,
@@ -24,10 +24,6 @@ app.get('/messages', (request, response) =>{
     })
     
 })
-
-// Message.remove({__id: '5a83566c4dab7d323ba1fdb6'}, (err) =>{
-//     console.log(err);
-// });
 
 app.post('/messages', async (request, response) => {
     try{
@@ -52,7 +48,6 @@ app.post('/messages', async (request, response) => {
         console.log('Message post called')
     }
 })
-
 
 io.on('connection', (socket) => {
     console.log('A user connected')
