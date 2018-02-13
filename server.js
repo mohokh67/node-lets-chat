@@ -46,6 +46,10 @@ app.post('/messages', async (request, response) => {
     } catch(error){
         response.sendStatus(500)
         return console.error(error);
+    } finally{
+        // e.g. close DB conection
+        // e.g. log some message
+        console.log('Message post called')
     }
 })
 
