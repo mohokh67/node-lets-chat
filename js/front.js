@@ -4,6 +4,7 @@ $(() => {
     $('.sendMessage').click(()=>{
         var message = {name: $('.messengerName').val(), message: $('.messengerMessage').val()}
         postMessage(message);
+        $('.messengerMessage').val('');
     })
     getMessages();
 })
