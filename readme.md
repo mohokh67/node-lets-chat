@@ -1,5 +1,5 @@
 # Chat Application with Nodejs
-This is my first Nodejs application. I like the idea and how fast and clean is the code. I used follwing technologies and libraries for this app:
+This is my first Nodejs application. I like the idea and how fast and clean is the code. I used following technologies and libraries for this app:
 * node
 * express
 * socket.io
@@ -15,22 +15,25 @@ npm install -g nodemon
 
 ## Installation
 * Development 
+
 In order to install the project you need to run the follwing command:
 ```
 npm install
 ```
 * Production
-Run this command which exclude the `DEV Dependencies`
+
+Run this command which exclude `DEV Dependencies`
 ```
 npm install --production
 ```
-With the --production flag (or when the NODE_ENV environment variable is set to production), npm will not install modules listed in devDependencies.
+With the `--production` flag (or when the `NODE_ENV` environment variable is set to production), npm will not install modules listed in devDependencies.
 
 * Result
+
 Run `nodemon ./server.js` in terminal and navigate to `http://localhost:3002` in browser to see the application.
 
 ## Testing
-For testing, we are going to use `Jasmine` which is part of `Dev Dependencies`. Run follwing command and see the result.
+For testing, I have used `Jasmine` which is part of `Dev Dependencies`. Run follwing command and see the result.
 ```
 npm test
 ```
